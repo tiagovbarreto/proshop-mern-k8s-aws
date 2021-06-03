@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  ENV_NAME: "dev"
+kind: ConfigMap
+metadata:
+  name: ticketing-config
+  namespace: default

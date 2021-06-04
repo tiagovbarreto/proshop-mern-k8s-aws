@@ -18,8 +18,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: backend-config
-            - configMapRef:
-                name: mongo-config
 ---
 apiVersion: v1
 kind: Service

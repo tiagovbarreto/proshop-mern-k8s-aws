@@ -6,3 +6,4 @@ metadata:
 data:
   NODE_ENV: DEV
   NODE_PORT: "3000"
+  MONGO_URI: "mongodb://mongo-service:27017/proshop"

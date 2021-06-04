@@ -4,4 +4,5 @@ metadata:
   name: mongo-config
   namespace: default
 data:
-  MONGO_URI: mongodb://mongo-service:27017/proshop
+  MONGO_INITDB_ROOT_USERNAME: root
+  MONGO_INITDB_ROOT_PASSWORD: MongoDBPassword!

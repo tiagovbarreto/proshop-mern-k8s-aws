@@ -1,26 +1,25 @@
-apiVersion: skaffold/v2alpha3
+apiVersion: skaffold/v2beta16
 kind: Config
-deploy:
-  kubectl:
-    manifests:
-      - ./infra/k8s-minikube/*
+
 build:
   local:
     push: false
   artifacts:
-    - image: tiagovalentimbarreto/proshop-frontend
+    - image: proshop-frontend
       context: frontend
+      sync:
+        infer: ['**/*']
       docker:
         dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.js'
-            dest: .
-    - image: tiagovalentimbarreto/proshop-backend
+
+    - image: proshop-backend
       context: backend
+      sync:
+        infer: ['**/*']
       docker:
         dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.js'
-            dest: .
+
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s-mkb/*

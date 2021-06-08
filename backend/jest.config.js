@@ -14,5 +14,4 @@ export default {
     '^.+\\.js$': 'babel-jest',
     '^.+\\.mjs$': 'babel-jest',
   },
-  testRegex: '((\\.|/*.)(test))\\.js?$',
 }

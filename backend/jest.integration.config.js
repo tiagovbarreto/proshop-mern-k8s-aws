@@ -1,6 +1,6 @@
 import config from './jest.config.js'
 
 config.testMatch = ['**/*.test.js']
-config.setupFilesAfterEnv = ['./src/teste/setup.js']
+config.setupFilesAfterEnv = ['./test/setup.js']
 
 export default config

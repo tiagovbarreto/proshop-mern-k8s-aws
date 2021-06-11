@@ -1,41 +1,41 @@
-import { MongoMemoryServer } from 'mongodb-memory-server'
 import mongoose from 'mongoose'
-import app from '../src/server.js'
+import { MongoMemoryServer } from 'mongodb-memory-server'
 
-let server
-let mongo
+// May require additional time for downloading MongoDB binaries
+//jest.setTimeout(60000)
 
-beforeEach(() => {})
-afterEach(async () => {
-  await Genre.deleteOne({})
-  await server.close()
-})
+let mongoServer = null
 
 beforeAll(async () => {
-  //jest.setTimeout(30000);
-
-  server = require('')
-
-  process.env.JWT_KEY = 'asdfasdf'
-
-  mongo = new MongoMemoryServer()
-  const mongoUri = await mongo.getUri()
-
-  await mongoose.connect(mongoUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  await makeMongoMemoryServer()
 })
 
 beforeEach(async () => {
+  await deleteCollections()
+})
+
+afterAll(async () => {
+  await destroyMongoMemoryServer()
+})
+
+async function deleteCollections() {
   const collections = await mongoose.connection.db.collections()
 
   for (let collection of collections) {
     await collection.deleteMany({})
   }
-})
+}
 
-afterAll(async () => {
-  await mongo.stop()
-  await mongoose.connection.close()
-})
+async function destroyMongoMemoryServer() {
+  await mongoose.disconnect()
+  await mongoServer.stop()
+}
+
+async function makeMongoMemoryServer() {
+  mongoServer = new MongoMemoryServer()
+  const mongoUri = await mongoServer.getUri()
+  await mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+}

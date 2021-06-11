@@ -14,4 +14,5 @@ export default {
     '^.+\\.js$': 'babel-jest',
     '^.+\\.mjs$': 'babel-jest',
   },
+  testTimeout: 60000,
 }

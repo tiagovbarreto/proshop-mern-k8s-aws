@@ -5,14 +5,14 @@ build:
   local:
     push: false
   artifacts:
-    - image: proshop-frontend
+    - image: proshop/frontend
       context: frontend
       sync:
         infer: ['**/*']
       docker:
         dockerfile: Dockerfile
 
-    - image: proshop-backend
+    - image: proshop/backend
       context: backend
       sync:
         infer: ['**/*']

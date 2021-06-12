@@ -1,0 +1,55 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Kubernetes: Run/Debug",
+            "type": "cloudcode.kubernetes",
+            "request": "launch",
+            "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+            "watch": true,
+            "cleanUp": true,
+            "portForward": true,
+            "debug": [
+                {
+                    "image": "proshop/backend",
+                    "containerName": "backend",
+                    "sourceFileMap": {
+                        "${workspaceFolder}/backend": "/app"
+                    }
+                },
+                {
+                    "image": "proshop/frontend",
+                    "containerName": "frontend",
+                    "sourceFileMap": {
+                        "${workspaceFolder}/frontend": "/app"
+                    },
+
+                }
+            ]
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Docker: Attach to backend",
+            "localRoot": "${workspaceFolder}/backend",
+            "remoteRoot": "/app",
+            "port": 9229,
+            "restart": true,
+            "trace": true
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Docker: Attach to frontend",
+            "localRoot": "${workspaceFolder}/frontend",
+            "remoteRoot": "/app",
+            "port": 9230,
+            "restart": true,
+            "trace": true
+        }
+    ]
+}

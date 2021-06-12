@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-service
@@ -10,11 +10,17 @@ spec:
     - host: proshop.dev
       http:
         paths:
-          - path: /api/products/?(.*)
+          - path: /api/?(.*)
+            pathType: Prefix
             backend:
-              serviceName: backend-service
-              servicePort: 3000
+              service:
+                name: backend-service
+                port:
+                  number: 3000
           - path: /?(.*)
+            pathType: Prefix
             backend:
-              serviceName: frontend-service
-              servicePort: 3000
+              service:
+                name: frontend-service
+                port:
+                  number: 3000

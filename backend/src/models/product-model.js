@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import reviewSchema from './reviewModel.js'
+import reviewSchema from './review-model.js'
 
 const productSchema = mongoose.Schema(
   {

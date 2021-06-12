@@ -4,6 +4,17 @@
   "main": "index.js",
   "license": "MIT",
   "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon -- --inspect=0.0.0.0:9229 src/server.js",
+    "test": "jest --runInBand --coverage --passWithNoTests",
+    "test:unit": "npm test -- -c jest.unit.config.js",
+    "test:integration": "npm test -- -c jest.integration.config.js",
+    "test:ci": "jest",
+    "data:import": "node src/seeder",
+    "data:destroy": "node src/seeder -d",
+    "prepare:husky": "cd .. && husky install ./backend/.husky"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
@@ -11,17 +22,16 @@
     "express-async-handler": "^1.1.4",
     "mongoose": "^5.12.12"
   },
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "data:import": "node seeder",
-    "data:destroy": "node seeder -d",
-    "prepare": "cd .. && husky install ./backend/.husky"
-  },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "babel-jest": "^27.0.2",
     "husky": "^6.0.0",
-    "nodemon": "^2.0.7"
+    "jest": "^27.0.4",
+    "mongodb-memory-server": "^6.9.6",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
   }
 }

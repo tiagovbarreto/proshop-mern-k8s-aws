@@ -13,7 +13,7 @@ import connectDB from './config/db.js'
 const importData = async () => {
   connectDB()
 
-  console.log('Data import started ...')
+  console.log('Data import started ....')
 
   try {
     await Order.deleteMany()

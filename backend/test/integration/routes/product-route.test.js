@@ -7,6 +7,7 @@ const makeGetProducts = (url = '/api/products') => {
 describe('Products API', () => {
   it('should return an empty array if no products', async () => {
     const res = await makeGetProducts('/api/products')
+    console.log(res.body)
     expect(res.status).toBe(200)
     expect(res.body).toEqual([])
   })

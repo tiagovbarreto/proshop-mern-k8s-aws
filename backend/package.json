@@ -10,7 +10,7 @@
     "test": "jest --runInBand --coverage --passWithNoTests",
     "test:unit": "npm test -- -c jest.unit.config.js",
     "test:integration": "npm test -- -c jest.integration.config.js",
-    "test:ci": "jest",
+    "test:ci": " npm run test:unit && npm run test:integration",
     "data:import": "node src/seeder",
     "data:destroy": "node src/seeder -d",
     "prepare:husky": "cd .. && husky install ./backend/.husky"

@@ -15,4 +15,5 @@ export default {
     '^.+\\.mjs$': 'babel-jest',
   },
   testTimeout: 60000,
+  setupFilesAfterEnv: ['./test/setup.js'],
 }

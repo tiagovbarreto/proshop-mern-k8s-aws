@@ -20,12 +20,10 @@ const ProductScreen = ({ match }) => {
     const source = axios.CancelToken.source()
 
     const fetchProduct = async () => {
-      const { data } = await axios.get(
-        `https://proshop.dev/api/products/${id}`,
-        {
-          cancelToken: source.token,
-        }
-      )
+      const url = `/api/products/${id}`
+      const { data } = await axios.get(url, {
+        cancelToken: source.token,
+      })
 
       setProduct(data)
     }

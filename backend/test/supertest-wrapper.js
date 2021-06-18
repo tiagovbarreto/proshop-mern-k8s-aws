@@ -6,6 +6,7 @@ const hook =
   (args) =>
     supertest(app)[method](args)
 
+
 const request = {
   post: hook('post'),
   get: hook('get'),

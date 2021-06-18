@@ -1,11 +1,9 @@
-FROM node:alpine AS builder
+FROM node:alpine
 WORKDIR /app
-COPY . .
-RUN npm install && npm run build
+COPY package*json ./
+RUN npm install --silent
+COPY ./ ./
+CMD ["npm", "start"]
 
-FROM nginx:alpine
-WORKDIR /usr/share/nginx/html
-RUN rm -rf ./*
-COPY --from=builder /app/build .
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
 

@@ -15,6 +15,8 @@ spec:
       containers:
         - name: backend
           image: tiagovalentimbarreto/proshop-backend
+          # ports:
+          #   - containerPort: 80
           envFrom:
             - configMapRef:
                 name: backend-config
@@ -28,7 +30,6 @@ spec:
     app: backend
   type: ClusterIP
   ports:
-    - name: backend
-      protocol: TCP
+    - protocol: TCP
       port: 3000
       targetPort: 3000

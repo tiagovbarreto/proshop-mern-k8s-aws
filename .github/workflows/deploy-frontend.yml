@@ -18,4 +18,13 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push tiagovalentimbarreto/proshop-frontend
+      - name: Build and push FRONTEND
+        uses: ianbelcher/eks-kubectl-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          cluster_name: ${{ secrets.CLUSTER_NAME }}
+          args: rollout restart deployment frontend-deploy
+      
 

@@ -19,7 +19,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push tiagovalentimbarreto/proshop-backend
 
-      - name: Build and push CONTAINER_NAME
+      - name: Build and push BACKEND
         uses: ianbelcher/eks-kubectl-action@master
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}

@@ -10,7 +10,7 @@ build:
       sync:
         infer: ['**/*']
       docker:
-        dockerfile: Dockerfile
+        dockerfile: Dockerfile.dev
 
     - image: tiagovalentimbarreto/proshop-backend
       context: backend
